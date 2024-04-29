@@ -1,24 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import PageWrapper from './components/layouts/page-wrapper/page-wrapper';
+import Header from './components/layouts/header/header';
+import Footer from './components/layouts/footer/footer';
+import Main from './components/pages/main';
+import { ThemeProvider } from 'styled-components';
+import theme from './components/ui/theme';
+import Catalog from './components/pages/catalog';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <PageWrapper>
+        <Header/>
+        <Catalog/>
+        {/* <Main/> */}
+        <Footer/>
+      </PageWrapper>
+    </ThemeProvider>
   );
 }
 
