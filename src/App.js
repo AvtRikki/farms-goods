@@ -6,15 +6,21 @@ import Main from './components/pages/main';
 import { ThemeProvider } from 'styled-components';
 import theme from './components/ui/theme';
 import Catalog from './components/pages/catalog';
+import { AppRoute } from "./const";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <PageWrapper>
-        <Header/>
-        <Catalog/>
-        {/* <Main/> */}
-        <Footer/>
+        <Router>
+          <Header/>
+          <Routes>
+            <Route index path={AppRoute.MAIN} element={<Main/>}/>
+            <Route path={AppRoute.BUY} element={<Catalog/>}/>
+          </Routes>
+          <Footer/>
+        </Router>
       </PageWrapper>
     </ThemeProvider>
   );

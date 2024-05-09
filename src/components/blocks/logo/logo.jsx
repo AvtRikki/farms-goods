@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Logo = () => {
   return (
-    <LogoStyled href='/index.html'>
+    <LogoStyled href='/'>
         <div className='logo-icon'>
             <LogoIcon/>
        </div>
