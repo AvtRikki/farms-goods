@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PrimatyButton from '../../ui/buttons/primary-button'
 
-const Cart = () => {
+const Cart = ({selectedProducts}) => {
+  const [address, setAddress] = useState("");
+  const totalSum = selectedProducts.reduce((sum, product) => sum + product.price, 0);
+
+  const handleBuyClick = () => {
+    alert(`Спасибо за заказ, вы купили:\n${selectedProducts.map(
+      (product) => `${product.name} - ${product.price} руб.\n`
+    )}
+    Итого: ${totalSum} руб.
+    Доставка по адресу: ${address}.`);
+  };
+
   return (
-    <CartStyled>
+    <CartStyled onSubmit={handleBuyClick}>
       <p className='section-title'>Сделать заказ</p>
-      <input className="address" placeholder='Введите адрес доставки'></input>
+      <input className="address" placeholder='Введите адрес доставки' onChange={(e) => setAddress(e.target.value)}></input>
       <span className='price-title'>Цена</span>
-      <span className='price-value'>400</span>
-      <PrimatyButton text={"Купить"}/>
+      <span className='price-value'>{totalSum}</span>
+      <PrimatyButton text={"Купить"} disabled={!address}/>
     </CartStyled>
   )
 }

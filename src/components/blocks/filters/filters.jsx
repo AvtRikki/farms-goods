@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { goods } from '../../../mocks/mock-data';
 
-const Filters = () => {
+const Filters = ({ onSelectProduct }) => {
   return (
     <FilterStyled>
       <p className='section-title'>Выберите продукты</p>
       <div className="checkbox-container">
-      {goods && goods.map((item) => {
-        return <label key={item.name} className="item-checkbox">
+      {goods && goods.map((item, index) => {
+        return <label key={item.id} className="item-checkbox" onChange={(e) => onSelectProduct(item, index, e.target.checked)}>
           <span>{item.name}</span>
           <input className="item-checkbox-element" type="checkbox"></input>
           <span className="item-checkmark-element"></span>

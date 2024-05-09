@@ -25,7 +25,7 @@ const Card = ({cardItem}) => {
                     {cardItem.description}
                     </p>
                     <div className='card-price'>
-                    {cardItem.price}/ {cardItem.weight}
+                    {cardItem.price} руб./ {cardItem.weight} гр.
                     </div>
                 </>
             )} 
