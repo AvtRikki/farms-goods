@@ -11,6 +11,7 @@ const theme = {
             primary: '#FFFFFF',
             container: '#F6F6F6',
             promo: '#D8ECFE',
+            alternative: '#F7F7F7',
             promoDecoration: '#C4E2FF',
             blocks: {
                 positive: '#E1EDCE',

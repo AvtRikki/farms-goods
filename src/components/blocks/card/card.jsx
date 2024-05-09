@@ -20,14 +20,39 @@ const Card = ({cardItem}) => {
                 <TabButton name='Свойства' isActive={activeIndex === 2} click={() => onTabClick(2)}/>
             </div> 
             {activeIndex === 0 && (
-                <p className='card-description'>
-                {cardItem.description}
-            </p>
+                <>
+                    <p className='card-description'>
+                    {cardItem.description}
+                    </p>
+                    <div className='card-price'>
+                    {cardItem.price}/ {cardItem.weight}
+                    </div>
+                </>
             )} 
             
-            <div className='card-price'>
-                {cardItem.price}/ {cardItem.weight}
-            </div>
+            {activeIndex === 1 && (
+                <p className='card-parameters'>
+                {cardItem.characteristics.map((item) => {
+                    return <div>
+                        <span className='card-parameter-name'>{item.name}</span>:&nbsp;
+                        <span className='card-parameter-value'>{item.value}</span>
+                    </div>
+                })}
+            </p>
+            )} 
+
+            {activeIndex === 2 && (
+                <p className='card-parameters'>
+                {cardItem.parameters.map((item) => {
+                        return <div>
+                            <span className='card-parameter-name'>{item.name}</span>:&nbsp;
+                            <span className='card-parameter-value'>{item.value}</span>
+                        </div>
+                })}
+            </p>
+            )} 
+
+           
         </div>
     </CardStyled>
   )
@@ -71,6 +96,9 @@ const CardStyled = styled.div`
         font-weight: ${props => props.theme.typography.body.description.fontWeight};
         line-height: ${props => props.theme.typography.body.description.lineHeight};
         margin: 0;
+        text-align: left;
+        max-height: 105px;
+        overflow-y: overlay;
     }
 
     .card-price {
@@ -81,6 +109,20 @@ const CardStyled = styled.div`
         background-color: ${props => props.theme.colors.backgrounds.promo};
         padding: 4px 8px;
         margin-top: auto;
+    }
+
+    .card-parameters {
+        margin: 0;
+        font-size: ${props => props.theme.typography.body.descriptionAccent.fontSize};
+        line-height: ${props => props.theme.typography.body.descriptionAccent.lineHeight};
+    }
+
+    .card-parameter-name {
+        font-weight: ${props => props.theme.typography.body.descriptionAccent.fontWeight};
+    }
+
+    .card-parameter-value {
+
     }
 `;
 
